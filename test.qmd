@@ -1,0 +1,22 @@
+---
+title: "It's jupyter"
+author: "Hunter Baker"
+format: 
+  html:
+    fig-width: 8
+    fig-height: 4
+    code-fold: true
+---
+
+## Air Quality
+
+
+```{python}
+import matplotlib.pyplot as plt
+import numpy as np 
+
+x = np.linspace(0, 10, 100)
+y = x**2
+
+plt.plot(x, y)
+```

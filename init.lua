@@ -1,0 +1,5 @@
+require("core.keymaps")
+require("core.options")
+require("lazy.lazy")
+require("config.keymaps")
+require("config.options")
