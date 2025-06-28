@@ -64,6 +64,22 @@ return {
                 end,
                 capabilities = require("cmp_nvim_lsp").default_capabilities(),
             })
+
+            require("lspconfig").r_language_server.setup({
+                on_attach = function(client, _)
+                    client.server_capabilities.documentFormattingProvider = false
+                    client.server_capabilities.documentRangeFormattingProvider = false
+                end,
+                settings = {
+                    r = {
+                        lsp = {
+                            diagnostics = true,
+                            rich_documentation = true,
+                        },
+                    },
+                },
+                capabilities = require("cmp_nvim_lsp").default_capabilities()
+            })
         end,
     },
 }

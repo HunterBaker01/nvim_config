@@ -4,8 +4,9 @@ def fun(t: str, p: str, n: int):
     return what
 
 
-
 fun(t="bomb", p="hunter", n=200)
 
 
-h     = "hello"
+h = "hello"
+
+fun(t="t", p="for texas", n=500)

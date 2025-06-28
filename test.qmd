@@ -10,13 +10,14 @@ format:
 
 ## Air Quality
 
+```{r}
+x <-     c(1: 100)
+print(x)
+```
+
 
 ```{python}
-import matplotlib.pyplot as plt
-import numpy as np 
+import numpy as np
 
-x = np.linspace(0, 10, 100)
-y = x**2
-
-plt.plot(x, y)
+np.exp(10)
 ```

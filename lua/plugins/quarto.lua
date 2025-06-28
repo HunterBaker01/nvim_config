@@ -9,5 +9,19 @@ return {
             'neovim/nvim-lspconfig',
             'nvim-treesitter/nvim-treesitter'
         },
-    },
+        config = function()
+            require('quarto').setup({
+                lspFeatures = {
+                    languages   = { "r", "python", "bash" },
+                    chunks      = "curly",
+                    diagnostics = {
+                        enabled = true,
+                    },
+                    completion  = {
+                        enabled = true,
+                    },
+                },
+            })
+        end
+    }
 }
