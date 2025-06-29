@@ -7,12 +7,19 @@ return {
             "hrsh7th/cmp-nvim-lsp",
             "hrsh7th/cmp-buffer",
             "hrsh7th/cmp-path",
+            "L3MON4D3/LuaSnip",
+            "saadparwaiz1/cmp_luasnip",
         },
         opts = function()
             vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
             local cmp = require("cmp")
             local auto_select = true
             return {
+                snippet = {
+                    expand = function(args)
+                        require('luasnip').lsp_expand(args.body)
+                    end,
+                },
                 completion = {
                     completeopt = "menu,menuone,noinsert" .. (auto_select and "" or ",noselect"),
                 },
@@ -32,6 +39,7 @@ return {
                     { name = "nvim_lsp" },
                     { name = "lazydev" },
                     { name = "path" },
+                    { name = "luasnip" },
                 }, {
                     { name = "buffer" },
                 }),

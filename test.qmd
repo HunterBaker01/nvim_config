@@ -12,12 +12,11 @@ format:
 
 ```{r}
 x <-     c(1: 100)
+
+c <-    c(2: 100)
 print(x)
 ```
 
 
-```{python}
-import numpy as np
 
-np.exp(10)
-```
+No I am your father

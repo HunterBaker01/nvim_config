@@ -63,12 +63,44 @@ return {
                     end
                 end,
                 capabilities = require("cmp_nvim_lsp").default_capabilities(),
+                settings = {
+                    pylsp = {
+                        plugins = {
+                            jedi_completion = {
+                                include_params = true,
+                            },
+                        },
+                    },
+                },
             })
 
+            -- r_language_server configuration
+            -- require("lspconfig").r_language_server.setup({
+            --     on_attach = function(client, bufnr)
+            --         if client.server_capabilities.documentFormattingProvider then
+            --             vim.api.nvim_create_autocmd("BufWritePre", {
+            --                 buffer = bufnr,
+            --                 callback = function()
+            --                     vim.lsp.buf.format({ bufnr = bufnr })
+            --                 end,
+            --             })
+            --         end
+            --         -- client.server_capabilities.documentFormattingProvider = false
+            --         -- client.server_capabilities.documentRangeFormattingProvider = false
+            --     end,
+            --     settings = {
+            --         r = {
+            --             lsp = {
+            --                 rich_documentation = true,
+            --             },
+            --         },
+            --     },
+            --     capabilities = require("cmp_nvim_lsp").default_capabilities()
+            -- })
             require("lspconfig").r_language_server.setup({
                 on_attach = function(client, _)
-                    client.server_capabilities.documentFormattingProvider = false
-                    client.server_capabilities.documentRangeFormattingProvider = false
+                    -- client.server_capabilities.documentFormattingProvider = false
+                    -- client.server_capabilities.documentRangeFormattingProvider = false
                 end,
                 settings = {
                     r = {

@@ -12,14 +12,12 @@ return {
         config = function()
             require('quarto').setup({
                 lspFeatures = {
-                    languages   = { "r", "python", "bash" },
-                    chunks      = "curly",
+                    languages = { "r" },
                     diagnostics = {
                         enabled = true,
+                        triggers = { "BufWritePost" }
                     },
-                    completion  = {
-                        enabled = true,
-                    },
+                    completion = { enabled = true },
                 },
             })
         end
