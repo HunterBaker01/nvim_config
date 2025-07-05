@@ -73,30 +73,6 @@ return {
                     },
                 },
             })
-
-            -- r_language_server configuration
-            -- require("lspconfig").r_language_server.setup({
-            --     on_attach = function(client, bufnr)
-            --         if client.server_capabilities.documentFormattingProvider then
-            --             vim.api.nvim_create_autocmd("BufWritePre", {
-            --                 buffer = bufnr,
-            --                 callback = function()
-            --                     vim.lsp.buf.format({ bufnr = bufnr })
-            --                 end,
-            --             })
-            --         end
-            --         -- client.server_capabilities.documentFormattingProvider = false
-            --         -- client.server_capabilities.documentRangeFormattingProvider = false
-            --     end,
-            --     settings = {
-            --         r = {
-            --             lsp = {
-            --                 rich_documentation = true,
-            --             },
-            --         },
-            --     },
-            --     capabilities = require("cmp_nvim_lsp").default_capabilities()
-            -- })
             require("lspconfig").r_language_server.setup({
                 on_attach = function(client, _)
                     -- client.server_capabilities.documentFormattingProvider = false
@@ -111,6 +87,23 @@ return {
                     },
                 },
                 capabilities = require("cmp_nvim_lsp").default_capabilities()
+            })
+            -- C++ LSP with clangd
+            require("lspconfig").clangd.setup({
+                on_attach = function(client, bufnr)
+                    if client.server_capabilities.documentFormattingProvider then
+                        vim.api.nvim_create_autocmd("BufWritePre", {
+                            buffer = bufnr,
+                            callback = function()
+                                vim.lsp.buf.format({ async = false, bufnr = bufnr })
+                            end,
+                        })
+                    end
+                end,
+                capabilities = require("cmp_nvim_lsp").default_capabilities(),
+                cmd = { "clangd", "--background-index", "--clang-tidy" }, -- Enable clang-tidy diagnostics
+                filetypes = { "c", "cpp", "objc", "objcpp" },
+                root_dir = require("lspconfig").util.root_pattern("compile_commands.json", "compile_flags.txt", ".git"),
             })
         end,
     },

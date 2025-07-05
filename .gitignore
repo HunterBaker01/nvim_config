@@ -1,0 +1,5 @@
+todo.txt 
+.local/
+.cache/
+*.log
+*.env
